@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run iOS",
+      "request": "launch",
+      "type": "expo",
+      "platform": "ios"
+    },
+    {
+      "name": "Run Android",
+      "request": "launch",
+      "type": "expo",
+      "platform": "android"
+    },
+    {
+      "name": "Run Web",
+      "request": "launch",
+      "type": "expo",
+      "platform": "web"
+    },
+    {
+      "name": "Attach to Expo (iOS)",
+      "request": "attach",
+      "type": "expo",
+      "platform": "ios"
+    },
+    {
+      "name": "Attach to Expo (Android)",
+      "request": "attach",
+      "type": "expo",
+      "platform": "android"
+    }
+  ]
+}
