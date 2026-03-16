@@ -1,22 +1,4 @@
-# Modern React Native MVVM Architecture
-
-This folder (`src/rock`) demonstrates a modern **MVVM (Model-View-ViewModel)** architecture tailored for React Native.
-
-In modern React Native, we typically use **Custom Hooks as ViewModels**. This cleanly separates our UI (Views) from our business logic and state management.
-
-## Directory Structure
-
-- **`models/`**: Contains the data structures, TypeScript interfaces, and types. It defines *what* the data is.
-- **`services/`**: Contains pure business logic, API calls, database interactions, or external integrations. It handles *how* data is fetched or calculated independently of the UI.
-- **`viewmodels/`**: Contains Custom Hooks (e.g., `useRockPaperScissors.ts`). This is the glue. It holds the React state, calls the services, and exposes variables and functions for the View to consume.
-- **`views/`**: Contains the React Native components and screens (`.tsx` files). They should be as "dumb" as possible, only rendering what the ViewModel tells them to, and passing user interactions back to the ViewModel.
-
-## Why this approach?
-1. **Separation of Concerns**: UI developers can work on `views/` while logic developers work on `viewmodels/` and `services/`.
-2. **Testability**: You can unit test the `viewmodels/` and `services/` without needing to render React components.
-3. **Reusability**: The same ViewModel can be used by different Views (e.g., a Mobile View and a Web View).
-
-## Redux Architecture in ReactXNative
+# Redux Architecture in ReactXNative
 
 Redux acts as the central brain of our application. Instead of passing data manually from folder to folder, every game connects directly to the store. 
 
@@ -68,10 +50,10 @@ graph TD
     style CH fill:#1E293B,color:white
 ```
 
-### How the Diagram Works
+## How the Diagram Works
 
-1. **The Core (Top):** `App.tsx` provides the store to the entire app. The store gets its intelligence from `gameSlice.ts`, which holds the state variable `currentGame`.
-2. **The Decision Maker (Middle):** `RootNavigator.tsx` functions like a traffic cop. It constantly monitors Redux via `useSelector`. If `currentGame` changes to `'tank'`, it hides the dashboard and renders the TankGame folder.
+1. **The Core (Top):** [App.tsx](file:///Users/fendy24/Downloads/reactxnative/App.tsx) provides the store to the entire app. The store gets its intelligence from [gameSlice.ts](file:///Users/fendy24/Downloads/reactxnative/src/store/gameSlice.ts), which holds the state variable `currentGame`.
+2. **The Decision Maker (Middle):** [RootNavigator.tsx](file:///Users/fendy24/Downloads/reactxnative/src/RootNavigator.tsx) functions like a traffic cop. It constantly monitors Redux via `useSelector`. If `currentGame` changes to `'tank'`, it hides the dashboard and renders the TankGame folder.
 3. **The Game Folders (Bottom):** Each of the folders (`rock/`, `scissors/`, `tank/`, `chess/`) are isolated and independent. However, they all have the power to send remote controls back to the Redux Brain using `useDispatch()`.
 
 When you click a button in the **Dashboard** inside the `rock` folder, it shoots a message up to Redux to change the state. Redux immediately tells the **RootNavigator** about the change, and the **RootNavigator** swaps the screens instantaneously!

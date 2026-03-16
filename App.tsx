@@ -1,19 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import { ChessGame } from './src/chess/ChessGame';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
+import { RootNavigator } from './src/RootNavigator';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ChessGame />
-      <StatusBar style="light" />
-    </View>
+    <Provider store={store}>
+      <RootNavigator />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333',
-  },
-});
