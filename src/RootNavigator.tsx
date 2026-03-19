@@ -27,6 +27,6 @@ export const RootNavigator: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333',
+    backgroundColor: '#0F172A', // Slate 900 - consistent with games and dashboard
   },
 });

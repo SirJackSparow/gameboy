@@ -160,7 +160,7 @@ export const FlappyBirdGame: React.FC = () => {
       const updatedEnemies = prev.map(e => ({ ...e, x: e.x - ENEMY_SPEED }));
       for (const enemy of updatedEnemies) {
         if (
-          birdRect.right > enemy.x + 5 && 
+          birdRect.right > enemy.x + 5 &&
           birdRect.left < enemy.x + ENEMY_SIZE - 5 &&
           birdRect.bottom > enemy.y + 5 &&
           birdRect.top < enemy.y + ENEMY_SIZE - 5
@@ -195,21 +195,21 @@ export const FlappyBirdGame: React.FC = () => {
         <View style={{ width: 60 }} />
       </View>
 
-      <TouchableOpacity 
-        style={styles.gameContainer} 
-        activeOpacity={1} 
+      <TouchableOpacity
+        style={styles.gameContainer}
+        activeOpacity={1}
         onPress={jump}
       >
         {/* Bird */}
         <Animated.View style={[
-          styles.birdContainer, 
-          { 
-            top: birdY, 
+          styles.birdContainer,
+          {
+            top: birdY,
             left: width / 4,
             transform: [
               { rotate: birdRotation },
               { scaleX: -1 }
-            ] 
+            ]
           }
         ]}>
           <Text style={styles.birdEmoji}>🐤</Text>
@@ -226,10 +226,10 @@ export const FlappyBirdGame: React.FC = () => {
         {pipes.map(pipe => (
           <React.Fragment key={pipe.id}>
             <View style={[styles.pipe, styles.topPipe, { left: pipe.x, height: pipe.topHeight }]} />
-            <View style={[styles.pipe, styles.bottomPipe, { 
-              left: pipe.x, 
-              height: height - pipe.topHeight - PIPE_GAP, 
-              top: pipe.topHeight + PIPE_GAP 
+            <View style={[styles.pipe, styles.bottomPipe, {
+              left: pipe.x,
+              height: height - pipe.topHeight - PIPE_GAP,
+              top: pipe.topHeight + PIPE_GAP
             }]} />
           </React.Fragment>
         ))}

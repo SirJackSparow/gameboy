@@ -96,6 +96,8 @@ export const DashboardScreen: React.FC = () => {
             icon="🐤"
             onPress={() => dispatch(setCurrentGame('flappybird'))}
           />
+
+
         </ScrollView>
 
         <View style={styles.footer}>
